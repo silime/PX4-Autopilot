@@ -105,7 +105,7 @@ jobs:
 
       - name: Building [${{ matrix.group }}]
         run: |
-            apt-get update && apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu -y
+            apt-get update && apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu gcc-arm-none-eabi -y
             if [[ "${{matrix.targets}}" == *"px4_fmu"* ]]; then
               # 如果包含，替换为指定的字符串
               echo "--------------------------------------------------------------------"
