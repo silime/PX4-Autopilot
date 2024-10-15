@@ -105,14 +105,15 @@ jobs:
 
       - name: Building [${{ matrix.group }}]
         run: |
-            apt-get update && apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu gcc-arm-none-eabi -y
+            echo ${{matrix.targets}}
+            apt-get update && apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu -y
             if [[ "${{matrix.targets}}" == *"px4_fmu"* ]]; then
               # 如果包含，替换为指定的字符串
               echo "--------------------------------------------------------------------"
               ./Tools/ci/build_all_runner.sh px4_fmu-v5_debug,px4_fmu-v3_default,px4_fmu-v5x_rover,px4_fmu-v5x_default
             else
               echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-              ./Tools/ci/build_all_runner.sh ${{matrix.targets}},px4_fmu-v3_default
+              ./Tools/ci/build_all_runner.sh ${{matrix.targets}}
             fi
 
       - name: Arrange Build Artifacts
