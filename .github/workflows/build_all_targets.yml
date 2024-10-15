@@ -105,6 +105,7 @@ jobs:
 
       - name: Building [${{ matrix.group }}]
         run: |
+            sudo apt-get install gcc-aarch64-linux-gnu
             ./Tools/ci/build_all_runner.sh ${{matrix.targets}}
 
       - name: Arrange Build Artifacts
